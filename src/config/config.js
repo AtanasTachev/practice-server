@@ -9,3 +9,4 @@ module.exports = {
         dbConnection: process.env.remoteDb
     }
 }
+console.log(process.env);
