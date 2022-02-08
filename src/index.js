@@ -3,10 +3,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
-const env = process.env.NODE_ENV || 'build';
+const env = process.env.NODE_ENV || 'development';
 const initDatabase = require('./config/database');
+const config = require('./config/config')[env];
 const dbConnection = process.env.dbConnection;
-const config = require('./config/config')
+// console.log(dbConnection);
 
 const app = express();
 
