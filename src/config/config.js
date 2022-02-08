@@ -1,12 +1,11 @@
-// require('dotenv');
+require('dotenv').config({path: __dirname + '/.env'});
 module.exports = {
     development: {
         port: process.env.PORT || 3030,
-        dbConnection: 'mongodb://localhost:27017/Practice'
+        dbConnection: process.env['LOCAL_DB']
     },
     build: {
         port: process.env.PORT || 3030,
-        dbConnection: 'mongodb+srv://atanas:3698741Md@cluster0.lgbxa.mongodb.net/practice?retryWrites=true&w=majority'
+        dbConnection: process.env.REMOTE_DB
     }
 }
-console.log(process.env);

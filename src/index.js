@@ -7,7 +7,6 @@ const env = process.env.NODE_ENV || 'development';
 const initDatabase = require('./config/database');
 const config = require('./config/config')[env];
 const dbConnection = process.env.dbConnection;
-// console.log(dbConnection);
 
 const app = express();
 
@@ -23,5 +22,3 @@ initDatabase(dbConnection)
 .catch(error => {
     console.log(`App initialization failed: ${error}`);
 })
-
-// console.log(config.build.dbConnection);
