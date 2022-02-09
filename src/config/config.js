@@ -1,8 +1,8 @@
-require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config();
 module.exports = {
     development: {
         port: process.env.PORT || 3030,
-        dbConnection: process.env['LOCAL_DB']
+        dbConnection: process.env.LOCAL_DB
     },
     build: {
         port: process.env.PORT || 3030,
