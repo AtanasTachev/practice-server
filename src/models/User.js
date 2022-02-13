@@ -26,7 +26,15 @@ const userSchema = new mongoose.Schema ({
     pass: {
         type: String,
         required: true
-    }
+    },
+    practicesJoined: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Practice'
+    }],
+    practicesCreated: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Practice'
+    }]
 });
 
 userSchema.pre('save', function(next) {
