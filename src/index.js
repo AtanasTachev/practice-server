@@ -5,17 +5,19 @@ const cors = require('cors');
 const {REMOTE_DB} = require('./constants');
 const {LOCAL_DB} = require('./constants');
 
+const routes = require('./routes')
 const env = process.env.NODE_ENV || 'development';
 const initDatabase = require('./config/database');
 const config = require('./config/config')[env];
 const port = process.env.PORT || 3030;
-// const dbConnection = process.env.dbConnection;
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+
+app.use(routes);
 
 initDatabase(LOCAL_DB)
 .then(() => {
