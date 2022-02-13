@@ -4,12 +4,12 @@ const { SECRET } = require('../constants');
 const { jwtSign } = require('../utils/jwtSign')
 
 exports.register = function ({...userData}) {
-    console.log({...userData});
+    // console.log({...userData});
     return User.create({...userData});
 };
-exports.login = async function ( email, password ) {
+exports.login = async function ( email, pass ) {
     let user = await User.findByEmail(email);
-    let isValid = user.validatePassword(password);
+    let isValid = user.validatePassword(pass);
 
     if(isValid) {
         let accessToken = await jwtSign({ _id: user._id, email: user.email}, SECRET)

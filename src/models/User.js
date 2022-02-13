@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema ({
         type: String,
         enum: ['male', 'female'],
         required: true
+    },
+    pass: {
+        type: String,
+        required: true
     }
 });
 
