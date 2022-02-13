@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
+const { isAuth } = require('../middlewares/authMiddleware')
 
 router.post('/register', async(req, res) => {
     let {
@@ -42,6 +43,12 @@ router.post('/login', async(req, res) => {
     } catch (error) {
         console.log({message: error.message});
     }
+});
+router.post('/logout', isAuth, async(req, res) => {
+    res.json({_id: '',
+            email: '',
+            accessToken: ''
+    });
 });
 
 module.exports = router;
