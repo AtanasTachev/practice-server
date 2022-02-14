@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const practiceSchema = new mongoose.Schema ({
-    practiceName: {
+    practiceTitle: {
         type: String,
         required: true
     },
