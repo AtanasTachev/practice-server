@@ -35,7 +35,5 @@ const practiceSchema = new mongoose.Schema ({
     }
 });
 
-
-
 const Practice = mongoose.model('Practice', practiceSchema);
 module.exports = Practice;

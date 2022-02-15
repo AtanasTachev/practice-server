@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema ({
         type: mongoose.Types.ObjectId,
         ref: 'Practice'
     }],
-    practicesCreated: [{
+    myPractices: [{
         type: mongoose.Types.ObjectId,
         ref: 'Practice'
     }]
