@@ -8,6 +8,7 @@ router.post('/register', async(req, res) => {
         lastName,
         email,
         gender,
+        role,
         pass,
         repass } = req.body;
     try {
@@ -17,6 +18,7 @@ router.post('/register', async(req, res) => {
                 lastName,
                 email,
                 gender,
+                role,
                 pass
             });
             let accessToken = await authService.login(email, pass)

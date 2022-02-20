@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const SALT = 10;
 
-const userSchema = new mongoose.Schema ({
+const mentorSchema = new mongoose.Schema ({
     firstName: {
         type: String,
         required: true,
@@ -27,33 +27,25 @@ const userSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
-    practicesJoined: [{
+    practicesToMentor: [{
         type: mongoose.Types.ObjectId,
         ref: 'Practice'
-    }],
-    myPractices: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Practice'
-    }],
-    role: {
-        type: String,
-        enum: ['student', 'mentor', 'admin']
-    }
+    }]
 });
 
-userSchema.pre('save', function(next) {
+mentorSchema.pre('save', function(next) {
     bcrypt.hash(this.pass, SALT)
     .then(hash => {
         this.pass = hash;
         next();
     });
 });
-userSchema.static('findByEmail', function(email) {
+mentorSchema.static('findByEmail', function(email) {
     return this.findOne({email});
 });
-userSchema.method('validatePassword', function(pass) {
+mentorSchema.method('validatePassword', function(pass) {
     return bcrypt.compare(pass, this.pass);
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const User = mongoose.model('Mentor', userSchema);
+module.exports = Mentor;
