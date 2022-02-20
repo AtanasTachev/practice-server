@@ -19,3 +19,8 @@ exports.login = async function ( email, pass ) {
         throw { message: 'Invalid email or password' }
     } 
 } 
+exports.getUser = function(id) {
+    let user = User.findById(id)
+    .populate([{path:'myPractices'}, {path:'practicesJoined'}]);
+    return user;
+}

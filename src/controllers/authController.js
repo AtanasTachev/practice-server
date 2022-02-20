@@ -52,5 +52,13 @@ router.post('/logout', isAuth, async(req, res) => {
             accessToken: ''
     });
 });
+router.get('/:userId', async(req, res) => {
+    try {
+        const user = await authService.getUser(req.params.userId);
+        res.json(user);
+    } catch(error) {
+        res.json({message: error.message});
+    }
+})
 
 module.exports = router;
