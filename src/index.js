@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use(routes);
 
-initDatabase(LOCAL_DB)
+initDatabase(REMOTE_DB)
 .then(() => {
     app.listen(port, console.log.bind(console, `App listening to http://localhost:${port}`));
     console.log('Connected to DB...');
