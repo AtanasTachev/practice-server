@@ -4,21 +4,13 @@ const { isAuth } = require('../middlewares/authMiddleware')
 
 router.post('/register', async(req, res) => {
     let {
-        firstName,
-        lastName,
         email,
-        gender,
-        role,
         pass,
         repass } = req.body;
     try {
         if(pass === repass) {
             let user = await authService.register({
-                firstName,
-                lastName,
                 email,
-                gender,
-                role,
                 pass
             });
             let accessToken = await authService.login(email, pass)
