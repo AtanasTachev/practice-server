@@ -5,15 +5,15 @@ const { isAuth } = require('../middlewares/authMiddleware')
 router.post('/register', async(req, res) => {
     let {
         email,
-        pass,
-        repass } = req.body;
+        password,
+        repassword } = req.body;
     try {
-        if(pass === repass) {
+        if(password === repassword) {
             let user = await authService.register({
                 email,
-                pass
+                password
             });
-            let accessToken = await authService.login(email, pass)
+            let accessToken = await authService.login(email, password)
             res.json({
                 _id: user._id,
                 email: user.email,
@@ -27,8 +27,8 @@ router.post('/register', async(req, res) => {
 
 router.post('/login', async(req, res) => {
     try {
-        const {email, pass} = req.body;
-        const {user, accessToken} = await authService.login(email, pass)
+        const {email, password} = req.body;
+        const {user, accessToken} = await authService.login(email, password)
         res.json({
             _id: user._id,
             email: user.email,

@@ -11,7 +11,11 @@ const userSchema = new mongoose.Schema ({
     pass: {
         type: String,
         required: true
-    }
+    },
+    orders: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Order'
+    }]
 });
 
 userSchema.pre('save', function(next) {
